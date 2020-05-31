@@ -1,0 +1,48 @@
+{
+  "name": "create-react-app",
+  "version": "4.0.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --cache --report-unused-disable-directives",
+    "lint:fix": "eslint . --cache --fix",
+    "prettier": "prettier --write ."
+  },
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "latest",
+    "clsx": "latest",
+    "react": "latest",
+    "react-device-frame": "latest",
+    "react-dom": "latest",
+    "react-scripts": "latest",
+    "react-router-dom": "latest"
+  },
+  "devDependencies": {
+    "prettier": "latest",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-import-resolver-webpack": "^0.12.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-mocha": "^6.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.1.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
