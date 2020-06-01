@@ -23,22 +23,33 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     backgroundColor: theme.palette.background.paper,
   },
+  listItemTextPrimary: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  listItemTextPrimaryTime: {
+    display: 'flex',
+    alignItems: 'center',
+  },
 }));
 
 const listItems = [
   {
     name: 'Remy Sharp',
     image: '/static/images/avatar/1.jpg',
+    time: '9:38 AM',
     message: "I'll be in your neighborhood doing errands this…",
   },
   {
     name: 'Travis Howard',
     image: '/static/images/avatar/1.jpg',
+    time: 'Tuesday',
     message: "Wish I could come, but I'm out of town this…",
   },
   {
     name: 'Cindy Baker',
     image: '/static/images/avatar/1.jpg',
+    time: '8/2/22',
     message: 'Do you have Paris recommendations? Have you ever…',
   },
 ];
@@ -64,8 +75,23 @@ export default function AvatarList() {
             <ListItemAvatar>
               <Avatar alt={item.name} src={item.image} />
             </ListItemAvatar>
-            <ListItemText primary={item.name} secondary={item.message} />
-            <ChevronRightIcon color="action" />
+            <ListItemText
+              primary={
+                <span className={classes.listItemTextPrimary}>
+                  {item.name}
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    color="textSecondary"
+                    className={classes.listItemTextPrimaryTime}
+                  >
+                    {item.time}
+                    <ChevronRightIcon color="inherit" />
+                  </Typography>
+                </span>
+              }
+              secondary={item.message}
+            />
           </ListItem>
         ))}
       </List>
