@@ -31,12 +31,12 @@ function App(props) {
 
   return (
     <div>
+      <Home />
       <Fade in={backPaths.includes(location.pathname)} timeout={{ enter: 300, exit: 300 }}>
         <Link to="/" component={RouterLink} className={classes.link}>
           <ArrowBackIosIcon />
         </Link>
       </Fade>
-      <Home />
       <TransitionGroup>
         <Slide direction="left" key={location.key} timeout={{ enter: 300, exit: 300 }}>
           <Switch location={location}>

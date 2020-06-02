@@ -11,17 +11,13 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   prevTitle: {
     marginLeft: 24,
   },
   title: {
     display: 'flex',
     flex: 1,
-  },
-  list: {
-    width: '100%',
-    backgroundColor: theme.palette.background.paper,
   },
   listItemTextPrimary: {
     display: 'flex',
@@ -31,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
-}));
+});
 
 const listItems = [
   {
@@ -69,7 +65,7 @@ export default function AvatarList() {
         </Typography>
         <div className={classes.title} />
       </Toolbar>
-      <List className={classes.list} dense>
+      <List dense>
         {listItems.map((item, index) => (
           <ListItem key={item.name} divider={index < listItems.length - 1}>
             <ListItemAvatar>

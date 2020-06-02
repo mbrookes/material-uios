@@ -27,10 +27,6 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     justifyContent: 'center',
   },
-  list: {
-    width: '100%',
-    backgroundColor: theme.palette.background.paper,
-  },
 }));
 
 const pageList = [
@@ -63,7 +59,7 @@ export default function Home() {
           Pages
         </Typography>
       </Toolbar>
-      <List className={classes.list} dense>
+      <List dense>
         {pageList.map((item, index) => (
           <React.Fragment key={item.name}>
             <ListItem button component={RouterLink} to={item.path} key={item.name}>

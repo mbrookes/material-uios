@@ -13,7 +13,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   prevTitle: {
     marginLeft: 24,
   },
@@ -21,11 +21,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flex: 1,
   },
-  list: {
-    width: '100%',
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
+});
 
 const soundSettings = [
   {
@@ -61,7 +57,7 @@ export default function SettingsList() {
         </Typography>
         <div className={classes.title} />
       </Toolbar>
-      <List className={classes.list} dense>
+      <List dense>
         <ListSubheader disableSticky>Sounds</ListSubheader>
         {soundSettings.map((item, index) => (
           <React.Fragment key={item.name}>

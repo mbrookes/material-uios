@@ -1,10 +1,11 @@
 import React from 'react';
+import { deepmerge } from '@material-ui/utils';
 import { grey } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
-const theme = createMuiTheme({
+const baseTheme = createMuiTheme({
   palette: {
     primary: {
       main: '#007AFF',
@@ -125,7 +126,6 @@ const theme = createMuiTheme({
         border: `1px solid ${grey[400]}`,
         backgroundColor: grey[50],
         opacity: 1,
-        // transition: theme.transitions.create(['background-color', 'border']),
       },
     },
     MuiToolbar: {
@@ -159,6 +159,21 @@ const theme = createMuiTheme({
     MuiDrawer: {
       PaperProps: {
         elevation: 0,
+      },
+    },
+  },
+});
+
+const theme = deepmerge(baseTheme, {
+  overrides: {
+    MuiList: {
+      root: {
+        backgroundColor: baseTheme.palette.background.paper,
+      },
+    },
+    MuiSwitch: {
+      track: {
+        transition: baseTheme.transitions.create(['background-color', 'border']),
       },
     },
   },
