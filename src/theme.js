@@ -5,6 +5,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
+const iOSBoxShadow =
+  '0 2px 1px rgba(0,0,0,0.03),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
+
 const baseTheme = createMuiTheme({
   palette: {
     primary: {
@@ -24,7 +27,7 @@ const baseTheme = createMuiTheme({
     borderRadius: 12,
   },
   typography: {
-    fontFamily: ['"San Francisco"', '-apple-system', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+    fontFamily: ['-apple-system', '"San Francisco"', '"Helvetica Neue"', 'Arial', 'sans-serif'],
     h6: {
       fontSize: 16,
     },
@@ -85,13 +88,72 @@ const baseTheme = createMuiTheme({
         lineHeight: '2em',
         backgroundColor: '#F2F1F3',
         paddingTop: 24,
-        // color: 'primary',
+      },
+    },
+    MuiListItem: {
+      root: {
+        paddingTop: 6,
+        paddingBottom: 6,
       },
     },
     MuiListItemText: {
       primary: {
         fontSize: 16,
-        // color: 'primary',
+      },
+    },
+    MuiSlider: {
+      root: {
+        color: '#3880ff',
+        height: 2,
+        padding: '15px 0',
+      },
+      thumb: {
+        height: 23,
+        width: 23,
+        backgroundColor: '#fff',
+        boxShadow: iOSBoxShadow,
+        marginTop: -10,
+        marginLeft: -11,
+        '&:focus, &:hover, &$active': {
+          boxShadow:
+            '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
+          // Reset on touch devices, it doesn't add specificity
+          '@media (hover: none)': {
+            boxShadow: iOSBoxShadow,
+          },
+        },
+      },
+      active: {},
+      valueLabel: {
+        left: 'calc(-50% + 12px)',
+        top: -22,
+        '& *': {
+          background: 'transparent',
+          color: '#000',
+        },
+      },
+      track: {
+        height: 3,
+        borderRadius: 1.5,
+        left: '-11px !important',
+      },
+      rail: {
+        height: 3,
+        borderRadius: 1.5,
+        opacity: 0.5,
+        backgroundColor: '#bfbfbf',
+        width: 'calc(100% + 22px)',
+        left: -11,
+      },
+      mark: {
+        backgroundColor: '#bfbfbf',
+        height: 8,
+        width: 1,
+        marginTop: -3,
+      },
+      markActive: {
+        opacity: 1,
+        backgroundColor: 'currentColor',
       },
     },
     MuiSwitch: {
@@ -102,12 +164,13 @@ const baseTheme = createMuiTheme({
         margin: 0,
       },
       colorSecondary: {
-        padding: 1,
+        padding: 0,
+        transform: 'translateX(1.5px) translateY(1.5px)',
         '&$checked': {
-          transform: 'translateX(16px)',
+          transform: 'translateX(17px) translateY(1.5px)',
           color: 'white',
           '& + $track': {
-            backgroundColor: '#52d869',
+            backgroundColor: '#34c859',
             opacity: 1,
             border: 'none',
           },
@@ -118,13 +181,12 @@ const baseTheme = createMuiTheme({
         // },
       },
       thumb: {
-        width: 24,
-        height: 24,
+        width: 23,
+        height: 23,
       },
       track: {
         borderRadius: 26 / 2,
-        border: `1px solid ${grey[400]}`,
-        backgroundColor: grey[50],
+        backgroundColor: grey[200],
         opacity: 1,
       },
     },
