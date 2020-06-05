@@ -39,6 +39,10 @@ const pageList = [
     path: '/avatarlist',
   },
   {
+    name: 'Radio List',
+    path: '/radiolist',
+  },
+  {
     name: 'Action Sheet',
     path: '/action',
   },
@@ -59,7 +63,7 @@ export default function Home() {
           Pages
         </Typography>
       </Toolbar>
-      <List dense>
+      <List>
         {pageList.map((item, index) => (
           <React.Fragment key={item.name}>
             <ListItem button component={RouterLink} to={item.path} key={item.name}>

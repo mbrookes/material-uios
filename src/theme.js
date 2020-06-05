@@ -75,6 +75,11 @@ const baseTheme = createMuiTheme({
         marginLeft: 16,
       },
     },
+    MuiFormControl: {
+      root: {
+        width: '100%',
+      },
+    },
     MuiList: {
       padding: {
         paddingTop: 0,

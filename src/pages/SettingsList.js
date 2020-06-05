@@ -74,6 +74,13 @@ const soundSettings = [
 
 export default function SettingsList() {
   const classes = useStyles();
+
+  const [value, setValue] = React.useState(true);
+
+  const handleChange = () => {
+    setValue(!value);
+  };
+
   return (
     <div>
       <AppBar elevation={0} color="transparent">
@@ -95,7 +102,7 @@ export default function SettingsList() {
         <ListItem>
           <ListItemText primary="Vibrate on Ring" />
           <ListItemSecondaryAction>
-            <Switch checked />
+            <Switch checked={value} onClick={handleChange} />
           </ListItemSecondaryAction>
         </ListItem>
         <Divider variant="inset" component="li" />
@@ -112,7 +119,7 @@ export default function SettingsList() {
               <VolumeDown color="action" />
             </Grid>
             <Grid item xs>
-              <Slider arialabel="ringer volume" />
+              <Slider arialabel="ringer volume" defaultValue={50} />
             </Grid>
             <Grid item>
               <VolumeUp color="action" />
@@ -134,7 +141,7 @@ export default function SettingsList() {
         <ListSubheader disableSticky>Sound and Vibration Patterns</ListSubheader>
         {soundSettings.map((item, index) => (
           <React.Fragment key={item.name}>
-            <ListItem>
+            <ListItem button component={RouterLink} to="/radiolist">
               <ListItemText primary={item.name} />
               {item.setting}
               <ChevronRightIcon color="action" />
