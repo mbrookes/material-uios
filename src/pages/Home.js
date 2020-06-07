@@ -1,6 +1,6 @@
 import React from 'react';
-import clsx from 'clsx';
-import { useLocation, Link as RouterLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -10,70 +10,41 @@ import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    position: 'fixed',
-    left: 0,
-    width: '100%',
-    zIndex: -1,
-    transition: theme.transitions.create('left', {
-      easing: theme.transitions.easing.easeInOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  out: {
-    left: -110,
-  },
+const useStyles = makeStyles({
   toolbar: {
     justifyContent: 'center',
   },
-}));
+});
 
-const pageList = [
-  {
-    name: 'Settings List',
-    path: '/list',
-  },
-  {
-    name: 'Avatar List',
-    path: '/avatarlist',
-  },
-  {
-    name: 'Radio List',
-    path: '/radiolist',
-  },
-  {
-    name: 'Action Sheet',
-    path: '/action',
-  },
-  {
-    name: 'Alert Dialog',
-    path: '/dialog',
-  },
-];
-
-export default function Home() {
+export default function Home(props) {
   const classes = useStyles();
-  const location = useLocation();
+  const { routes } = props;
 
   return (
-    <div className={clsx(classes.root, { [classes.out]: location.pathname !== '/' })}>
+    <React.Fragment>
       <Toolbar variant="dense" className={classes.toolbar}>
         <Typography variant="h6" color="inherit">
           Pages
         </Typography>
       </Toolbar>
       <List>
-        {pageList.map((item, index) => (
-          <React.Fragment key={item.name}>
-            <ListItem button component={RouterLink} to={item.path} key={item.name}>
-              <ListItemText primary={item.name} />
-              <ChevronRightIcon color="action" />
-            </ListItem>
-            {index < pageList.length - 1 && <Divider variant="inset" component="li" />}
-          </React.Fragment>
-        ))}
+        {routes.map(
+          (item, index) =>
+            item.path !== '/' && (
+              <React.Fragment key={item.name}>
+                <ListItem button component={RouterLink} to={item.path} key={item.name}>
+                  <ListItemText primary={item.name} />
+                  <ChevronRightIcon color="action" />
+                </ListItem>
+                {index < routes.length - 1 && <Divider variant="inset" component="li" />}
+              </React.Fragment>
+            ),
+        )}
       </List>
-    </div>
+    </React.Fragment>
   );
 }
+
+Home.propTypes = {
+  routes: PropTypes.array,
+};

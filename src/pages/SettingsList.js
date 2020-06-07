@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
-import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
 import List from '@material-ui/core/List';
@@ -17,6 +16,7 @@ import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/core/Slider';
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
+import TopBar from '../components/TopBar';
 
 const useStyles = makeStyles({
   prevTitle: {
@@ -74,7 +74,6 @@ const soundSettings = [
 
 export default function SettingsList() {
   const classes = useStyles();
-
   const [value, setValue] = React.useState(true);
 
   const handleChange = () => {
@@ -82,21 +81,8 @@ export default function SettingsList() {
   };
 
   return (
-    <div>
-      <AppBar elevation={0} color="transparent">
-        <Toolbar variant="dense">
-          <Link component={RouterLink} to="/" className={classes.title}>
-            <Typography variant="h6" color="primary" className={classes.prevTitle}>
-              Settings
-            </Typography>
-          </Link>
-          <Typography variant="h6" color="inherit">
-            Sound & Haptics
-          </Typography>
-          <div className={classes.title} />
-        </Toolbar>
-      </AppBar>
-      <Toolbar variant="dense" />
+    <React.Fragment>
+      <TopBar backLabel="Back" label="Ringtone & Haptics" />
       <List>
         <ListSubheader disableSticky>Vibrate</ListSubheader>
         <ListItem>
@@ -141,7 +127,7 @@ export default function SettingsList() {
         <ListSubheader disableSticky>Sound and Vibration Patterns</ListSubheader>
         {soundSettings.map((item, index) => (
           <React.Fragment key={item.name}>
-            <ListItem button component={RouterLink} to="/radiolist">
+            <ListItem button component={RouterLink} to="/settingslist/radiolist">
               <ListItemText primary={item.name} />
               {item.setting}
               <ChevronRightIcon color="action" />
@@ -164,6 +150,6 @@ export default function SettingsList() {
           </ListItemSecondaryAction>
         </ListItem>
       </List>
-    </div>
+    </React.Fragment>
   );
 }

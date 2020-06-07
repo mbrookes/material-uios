@@ -1,9 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory, Link as RouterLink } from 'react-router-dom';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
@@ -13,11 +11,15 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import TopBar from '../components/TopBar';
 
 const useStyles = makeStyles({
   prevTitle: {
     marginLeft: 24,
+    display: 'flex',
+    flex: 1,
+  },
+  title: {
     display: 'flex',
     flex: 1,
   },
@@ -65,8 +67,6 @@ const sounds = [
 ];
 
 export default function RadioList() {
-  const history = useHistory();
-  const goBack = () => history.goBack();
   const classes = useStyles();
   const [value, setValue] = React.useState('Reflection (Default)');
 
@@ -77,17 +77,9 @@ export default function RadioList() {
   const EmptyIcon = () => <div className={classes.emptyIcon} />;
 
   return (
-    <div>
+    <React.Fragment>
       <AppBar elevation={0} color="transparent">
-        <Toolbar variant="dense">
-          <Typography variant="h6" color="primary" className={classes.prevTitle} onClick={goBack}>
-            Back
-          </Typography>
-          <Typography variant="h6" color="inherit">
-            Ringtone
-          </Typography>
-          <div className={classes.title} />
-        </Toolbar>
+        <TopBar backLabel="Back" label="Ringtone" />
       </AppBar>
       <Toolbar variant="dense" />
       <List>
@@ -95,8 +87,8 @@ export default function RadioList() {
         <FormControl component="fieldset">
           <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
             {sounds.map((sound) => (
-              <React.Fragment>
-                <ListItem key={sound}>
+              <React.Fragment key={sound}>
+                <ListItem>
                   <FormControlLabel
                     value={sound}
                     control={
@@ -111,6 +103,6 @@ export default function RadioList() {
           </RadioGroup>
         </FormControl>
       </List>
-    </div>
+    </React.Fragment>
   );
 }
