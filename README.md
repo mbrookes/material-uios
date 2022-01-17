@@ -22,4 +22,14 @@ or:
 
 ## The idea behind the example
 
-This example demonstrates how you can use [Create React App](https://github.com/facebookincubator/create-react-app).
+A CRA experiment with customising Material-UI to look like IOS.
+
+<img src="https://user-images.githubusercontent.com/357702/88441197-43c0f200-ce08-11ea-9b9f-91e054a7951f.png" width="50%" />
+
+<img src="https://user-images.githubusercontent.com/357702/88441226-5fc49380-ce08-11ea-887b-f500bf40a34c.png" width="50%" />
+
+<img src="https://user-images.githubusercontent.com/357702/88441394-e37e8000-ce08-11ea-82f6-461d0bd281a1.png" width="50%" />
+
+<img src="https://user-images.githubusercontent.com/357702/88441290-88e52400-ce08-11ea-91d3-449e3192aeb1.png" width="50%" />
+
+<img src="https://user-images.githubusercontent.com/357702/88441318-a31f0200-ce08-11ea-8174-fc3e6847e23b.png" width="50%" />
